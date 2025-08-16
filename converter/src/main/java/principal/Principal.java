@@ -13,7 +13,7 @@ public class Principal {
     public static void main(String[] args) throws IOException, InterruptedException {
         Scanner sc = new Scanner(System.in);
         int opcao = 0;
-        while ( true){
+        while (true){
 
             System.out.println("************************************************" + "\n" +
                     "Seja bem-vindo/a ao Conversor de Moedas" + "\n" + "\n" +
@@ -28,8 +28,13 @@ public class Principal {
                     "************************************************"
             );
 
-            opcao = sc.nextInt();
-            sc.nextLine();
+            if (sc.hasNextInt()) {
+                opcao = sc.nextInt();
+                sc.nextLine(); // Limpa o buffer
+            } else {
+                System.out.println("Opção inválida! Escolha entre 1 e 7.");
+            }
+
 
             if (opcao == 7) {
                 System.out.println("Saindo do programa...");
@@ -47,11 +52,6 @@ public class Principal {
 
 
         }
-
-        //ConsumoApi api = new ConsumoApi();
-        //var resultadoApi = api.ConsumoMoedaApi(sigla);
-        //System.out.println(resultadoApi);
-
 
 
         sc.close();

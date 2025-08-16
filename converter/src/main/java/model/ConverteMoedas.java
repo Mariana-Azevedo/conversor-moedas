@@ -43,13 +43,12 @@ public class ConverteMoedas {
                 break;
         }
 
-        // 🔹 Chama a API passando a moeda de entrada
+
         ConsumoApi api = new ConsumoApi();
         DadosMoedas dados = api.ConsumoMoedaApi(entrada);
 
-        // 🔹 Faz a conversão usando a taxa da moeda de saída
         Double taxa = dados.valor().get(saida);
-        Double valorConvertido = valor * taxa;
+        Long valorConvertido = fazConvercao(valor, taxa);
 
         System.out.println(String.format(
                 "Valor %.6f [%s] corresponde ao valor final de =>>> %.6f [%s]",
@@ -57,8 +56,7 @@ public class ConverteMoedas {
 
     }
 
-    public Long fazConvercao(Long valor) {
-
-        return valor;
+    public Long fazConvercao(Long valor, Double taxa) {
+        return (long) (valor * taxa);
     }
 }
